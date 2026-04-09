@@ -848,11 +848,57 @@ const handleGroupUpdate = async (sock, update) => {
   try {
     const { id, participants, action } = update;
     
-    // Validate group JID before processing
-    if (!id || !id.endsWith('@g.us')) {
-      return;
-    }
+    if (!id || !id.endsWith('@g.us')) return;
     
+    const groupSettings = database.getGroupSettings(id);
+    if (!groupSettings.welcome && !groupSettings.goodbye) return;
+    
+    const groupMetadata = await getGroupMetadata(sock, id);
+    if (!groupMetadata) return;
+
+    for (const participant of participants) {
+      let profilePicUrl = '';
+      try {
+        profilePicUrl = await sock.profilePictureUrl(participant, 'image');
+      } catch (ppError) {
+        profilePicUrl = 'https://i.postimg.cc/Rh1CMktt/1000086497.png';
+      }
+
+      const userTag = `@${participant.split('@')[0]}`;
+      const groupName = groupMetadata.subject || 'the group';
+      const memberCount = groupMetadata.participants.length;
+
+      if (action === 'add' && groupSettings.welcome) {
+        let welcomeText = `🎉 ✨  Hey ${userTag} 🕊️ ✨,\n\n`;
+        welcomeText += `*Welcome to* 𓊈 𓆩 *${groupName}* 𓆪 𓊉\n`;
+        welcomeText += `⚡𓊈𓆩⚔️𓆪𓊉! ✨🎉\n\n`;
+        welcomeText += `🚀 You just landed in an awesome group!\n`;
+        welcomeText += `👥 *Total Members:* ${memberCount}\n`;
+        welcomeText += `📢 *Rules:* Be respectful, stay active & enjoy\n\n`;
+        welcomeText += `      ─────➤ *Powered by TOM*`;
+
+        await sock.sendMessage(id, { 
+          image: { url: profilePicUrl }, 
+          caption: welcomeText, 
+          mentions: [participant] 
+        });
+      } else if (action === 'remove' && groupSettings.goodbye) {
+        let goodbyeText = `👋 ✨ Farewell ${userTag} 🕊️ ✨,\n\n`;
+        goodbyeText += `*Left from* 𓊈 𓆩 *${groupName}* 𓆪 𓊉\n\n`;
+        goodbyeText += `💔 We will (not) miss you! 💀\n`;
+        goodbyeText += `─────➤ *Powered by TOM*`;
+
+        await sock.sendMessage(id, { 
+          image: { url: profilePicUrl }, 
+          caption: goodbyeText, 
+          mentions: [participant] 
+        });
+      }
+    }
+  } catch (e) {
+    console.error('Group Update Error:', e);
+  }
+};
     const groupSettings = database.getGroupSettings(id);
     
     if (!groupSettings.welcome && !groupSettings.goodbye) return;
