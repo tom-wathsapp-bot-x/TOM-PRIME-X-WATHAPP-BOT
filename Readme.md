@@ -6,7 +6,7 @@
 <img src="https://i.postimg.cc/qvsPJgrP/IMG-20260409-WA0019.jpg?description=1&descriptionEditable=Elite%20Performance%20%7C%20Toxic%20Evil%20System%20%7C%20Tom%20Prime%20X&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pulls=1&stargazers=1&theme=Dark" alt="TOM-PRIME-X" />
 
 <p align="center">
-  <img src="https://i.postimg.cc/qvsPJgrP/IMG-20260409-WA0019.jpg.cc/q" alt="Tom Prime X Logo" width="250" style="border-radius: 20px; border: 5px solid #00d2ff; box-shadow: 0px 0px 35px #00d2ff;">
+  <img src="" alt="Tom Prime X Logo" width="250" style="border-radius: 20px; border: 5px solid #00d2ff; box-shadow: 0px 0px 35px #00d2ff;">
 </p>
 
 ## 👑 The Architect: Professor Tom
