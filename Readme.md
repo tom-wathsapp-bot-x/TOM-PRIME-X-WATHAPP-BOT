@@ -4,7 +4,7 @@
 ### ⚡ The Ultimate WhatsApp MD Bot | Engineered by Professor Tom ⚡
 
 <p align="center">
-  <img src="https://i.ibb.co/3YvWz5G/1000102753.jpg" alt="TOM-PRIME-X Logo" width="300" style="border-radius: 20px; border: 5px solid #00d2ff; box-shadow: 0px 0px 35px #00d2ff;">
+  <img src="https://i.postimg.cc/qvsPJgrP/IMG-20260409-WA0019.jpg" alt="TOM-PRIME-X Logo" width="300" style="border-radius: 20px; border: 5px solid #00d2ff; box-shadow: 0px 0px 35px #00d2ff;">
 </p>
 
 ## 👑 The Architect: Professor Tom
