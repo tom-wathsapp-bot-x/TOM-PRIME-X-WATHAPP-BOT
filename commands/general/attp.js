@@ -27,7 +27,7 @@ module.exports = {
       
       try {
         const mp4Buffer = await renderBlinkingVideoWithFfmpeg(text);
-        const webpBuffer = await writeExifVid(mp4Buffer, { packname: 'Knight Bot' });
+        const webpBuffer = await writeExifVid(mp4Buffer, { packname: 'ᴛᴏᴍ ᴘʀɪᴍᴇ x' });
         await sock.sendMessage(extra.from, { sticker: webpBuffer }, { quoted: msg });
       } catch (error) {
         console.error('Error generating attp sticker:', error);
